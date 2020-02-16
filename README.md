@@ -30,7 +30,7 @@ void main() async {
 		failure:(failre) => failire.toString());
 	print(resultAsString);
 }
-Future<Result<Failure, User>>fetchUser() async {
+Future<Result<User,Failure>>fetchUser() async {
 	if (ok){
 		return Result.success(user);
 	}

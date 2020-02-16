@@ -33,7 +33,7 @@ void main() async {
   print(usernameNotOk); // ERROR:Some Failure happened
 }
 
-Future<Result<Failure, User>> fetchFromServer(bool withError) async {
+Future<Result<User, Failure>> fetchFromServer(bool withError) async {
   await Future.delayed(Duration(milliseconds: 100));
   if (withError) {
     return Result.failure(SomeFailure());

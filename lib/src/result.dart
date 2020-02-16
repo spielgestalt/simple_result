@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
 
-class Result<Failure, Success> {
+class Result<Success, Failure> {
   final bool _isSuccess;
   final Success _value;
   final Failure _failure;

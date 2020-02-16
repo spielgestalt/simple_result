@@ -26,7 +26,7 @@ void main() {
   });
   group('with defined results', () {
     test('should return a valid type', () {
-      final successResult = Result<Failure, Example>.success(example);
+      final successResult = Result<Example, Failure>.success(example);
       final result = successResult.when(
           success: (example) => example, failure: (_) => null);
       expect(result, isA<Example>());
