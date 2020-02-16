@@ -20,7 +20,7 @@ class Result<Failure, Success> {
 
   R when<R>(
       {@required R Function(Success) success,
-        @required R Function(Failure) failure}) {
+      @required R Function(Failure) failure}) {
     if (_isSuccess) {
       return success(_value);
     }

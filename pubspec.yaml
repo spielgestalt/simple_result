@@ -1,7 +1,8 @@
 name: simple_result
 version: 0.0.1
-homepage: https://github
-description: A simple Result
+homepage: https://github.com/spielgestalt/simple_result.git
+author: Carsten Fregin <cfregin@spielgestalt.de>
+description: A simple posibility to return a Result with eiter success or failure.
 environment:
   sdk: ">=2.4.0 <3.0.0"
 dependencies:
