@@ -2,8 +2,6 @@ import 'package:simple_result/simple_result.dart';
 import 'package:test/test.dart';
 import 'package:meta/meta.dart';
 
-import 'simple_result_test.dart';
-
 class Example {
   final String username;
 

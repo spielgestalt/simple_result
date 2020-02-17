@@ -27,7 +27,7 @@
     <li><a href="index.html">simple_result</a></li>
     <li><a href="simple_result/simple_result-library.html">simple_result</a></li>
     <li><a href="simple_result/Result-class.html">Result<span class="signature">&lt;<wbr><span class="type-parameter">Success</span>, <span class="type-parameter">Failure</span>&gt;</span></a></li>
-    <li class="self-crumb">when&lt;<wbr><span class="type-parameter">R</span>&gt; method</li>
+    <li class="self-crumb">when&lt;<wbr><span class="type-parameter">ResultType</span>&gt; method</li>
   </ol>
   <div class="self-name">when</div>
   <form class="search navbar-right" role="search">
@@ -48,7 +48,7 @@
       <li><a href="index.html">simple_result</a></li>
       <li><a href="simple_result/simple_result-library.html">simple_result</a></li>
       <li><a href="simple_result/Result-class.html">Result<span class="signature">&lt;<wbr><span class="type-parameter">Success</span>, <span class="type-parameter">Failure</span>&gt;</span></a></li>
-      <li class="self-crumb">when&lt;<wbr><span class="type-parameter">R</span>&gt; method</li>
+      <li class="self-crumb">when&lt;<wbr><span class="type-parameter">ResultType</span>&gt; method</li>
     </ol>
     
     <h5>Result class</h5>
@@ -58,13 +58,18 @@
         <li><a href="simple_result/Result/Result.failure.html">failure</a></li>
         <li><a href="simple_result/Result/Result.success.html">success</a></li>
     
-        <li class="section-title inherited">
+        <li class="section-title">
             <a href="simple_result/Result-class.html#instance-properties">Properties</a>
         </li>
+        <li><a href="simple_result/Result/failure.html">failure</a></li>
+        <li><a href="simple_result/Result/isFailure.html">isFailure</a></li>
+        <li><a href="simple_result/Result/isSuccess.html">isSuccess</a></li>
+        <li><a href="simple_result/Result/success.html">success</a></li>
         <li class="inherited"><a href="simple_result/Result/hashCode.html">hashCode</a></li>
         <li class="inherited"><a href="simple_result/Result/runtimeType.html">runtimeType</a></li>
     
         <li class="section-title"><a href="simple_result/Result-class.html#instance-methods">Methods</a></li>
+        <li><a href="simple_result/Result/map.html">map</a></li>
         <li><a href="simple_result/Result/when.html">when</a></li>
         <li class="inherited"><a href="simple_result/Result/noSuchMethod.html">noSuchMethod</a></li>
         <li class="inherited"><a href="simple_result/Result/toString.html">toString</a></li>
@@ -80,12 +85,12 @@
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
-      <div><h1><span class="kind-method">when&lt;<wbr><span class="type-parameter">R</span>&gt;</span> method</h1></div>
+      <div><h1><span class="kind-method">when&lt;<wbr><span class="type-parameter">ResultType</span>&gt;</span> method</h1></div>
 
     <section class="multi-line-signature">
-      <span class="returntype">R</span>
+      <span class="returntype">ResultType</span>
             <span class="name ">when</span>
-&lt;<wbr><span class="type-parameter">R</span>&gt;(<wbr>{<span class="parameter" id="when-param-success"><span>@required</span> <span class="type-annotation">R</span> <span class="parameter-name">success</span>(<span class="parameter" id="param-"><span class="type-annotation">Success</span></span>), </span> <span class="parameter" id="when-param-failure"><span>@required</span> <span class="type-annotation">R</span> <span class="parameter-name">failure</span>(<span class="parameter" id="param-"><span class="type-annotation">Failure</span></span>)</span> })
+&lt;<wbr><span class="type-parameter">ResultType</span>&gt;(<wbr>{<span class="parameter" id="when-param-success"><span>@required</span> <span class="type-annotation">ResultType</span> <span class="parameter-name">success</span>(<span class="parameter" id="param-"><span class="type-annotation">Success</span></span>), </span> <span class="parameter" id="when-param-failure"><span>@required</span> <span class="type-annotation">ResultType</span> <span class="parameter-name">failure</span>(<span class="parameter" id="param-"><span class="type-annotation">Failure</span></span>)</span> })
       
     </section>
     <section class="desc markdown">
@@ -95,9 +100,9 @@ functions success and failure.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">R when&lt;R&gt;(
-    {@required R Function(Success) success,
-    @required R Function(Failure) failure}) {
+      <pre class="language-dart"><code class="language-dart">ResultType when&lt;ResultType&gt;(
+    {@required ResultType Function(Success) success,
+    @required ResultType Function(Failure) failure}) {
   if (_isSuccess) {
     return success(_value);
   }
@@ -115,7 +120,7 @@ functions success and failure.</p>
 <footer>
   <span class="no-break">
     simple_result
-      0.0.2
+      0.1.2
   </span>
 
   <!-- footer-text placeholder -->

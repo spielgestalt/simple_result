@@ -94,10 +94,42 @@
       </dl>
     </section>
 
-    <section class="summary offset-anchor inherited" id="instance-properties">
+    <section class="summary offset-anchor" id="instance-properties">
       <h2>Properties</h2>
 
       <dl class="properties">
+        <dt id="failure" class="property">
+          <span class="name"><a href="simple_result/Result/failure.html">failure</a></span>
+          <span class="signature">&#8594; Failure</span>         
+        </dt>
+        <dd>
+          returns the failure or null if the state is success.
+                  <div class="features">read-only</div>
+</dd>
+        <dt id="isFailure" class="property">
+          <span class="name"><a href="simple_result/Result/isFailure.html">isFailure</a></span>
+          <span class="signature">&#8594; bool</span>         
+        </dt>
+        <dd>
+          returns true, if the result is in failure state.
+                  <div class="features">read-only</div>
+</dd>
+        <dt id="isSuccess" class="property">
+          <span class="name"><a href="simple_result/Result/isSuccess.html">isSuccess</a></span>
+          <span class="signature">&#8594; bool</span>         
+        </dt>
+        <dd>
+          returns true, if the result is in success state.
+                  <div class="features">read-only</div>
+</dd>
+        <dt id="success" class="property">
+          <span class="name"><a href="simple_result/Result/success.html">success</a></span>
+          <span class="signature">&#8594; Success</span>         
+        </dt>
+        <dd>
+          returns the success value or null if there is a failure.
+                  <div class="features">read-only</div>
+</dd>
         <dt id="hashCode" class="property inherited">
           <span class="name"><a href="simple_result/Result/hashCode.html">hashCode</a></span>
           <span class="signature">&#8594; int</span>         
@@ -120,9 +152,19 @@
     <section class="summary offset-anchor" id="instance-methods">
       <h2>Methods</h2>
       <dl class="callables">
+        <dt id="map" class="callable">
+          <span class="name"><a href="simple_result/Result/map.html">map</a></span><span class="signature">&lt;<wbr><span class="type-parameter">ResultType</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="map-param-mapper"><span class="type-annotation">ResultType</span> <span class="parameter-name">mapper</span>(<span class="parameter" id="param-"><span class="type-annotation">Success</span></span>)</span>)
+            <span class="returntype parameter">&#8594; <a href="simple_result/Result-class.html">Result</a><span class="signature">&lt;<wbr><span class="type-parameter">ResultType</span>, <span class="type-parameter">Failure</span>&gt;</span></span>
+          </span>
+                  </dt>
+        <dd>
+          Use map to convert a Result from one value type to another.
+Changes only value type, not the Failure.
+                  
+</dd>
         <dt id="when" class="callable">
-          <span class="name"><a href="simple_result/Result/when.html">when</a></span><span class="signature">&lt;<wbr><span class="type-parameter">R</span>&gt;</span><span class="signature">(<wbr>{<span class="parameter" id="when-param-success"><span class="type-annotation">R</span> <span class="parameter-name">success</span>(<span class="parameter" id="param-"><span class="type-annotation">Success</span></span>), </span> <span class="parameter" id="when-param-failure"><span class="type-annotation">R</span> <span class="parameter-name">failure</span>(<span class="parameter" id="param-"><span class="type-annotation">Failure</span></span>)</span> })
-            <span class="returntype parameter">&#8594; R</span>
+          <span class="name"><a href="simple_result/Result/when.html">when</a></span><span class="signature">&lt;<wbr><span class="type-parameter">ResultType</span>&gt;</span><span class="signature">(<wbr>{<span class="parameter" id="when-param-success"><span class="type-annotation">ResultType</span> <span class="parameter-name">success</span>(<span class="parameter" id="param-"><span class="type-annotation">Success</span></span>), </span> <span class="parameter" id="when-param-failure"><span class="type-annotation">ResultType</span> <span class="parameter-name">failure</span>(<span class="parameter" id="param-"><span class="type-annotation">Failure</span></span>)</span> })
+            <span class="returntype parameter">&#8594; ResultType</span>
           </span>
                   </dt>
         <dd>
@@ -178,13 +220,18 @@ functions success and failure.
       <li><a href="simple_result/Result/Result.failure.html">failure</a></li>
       <li><a href="simple_result/Result/Result.success.html">success</a></li>
     
-      <li class="section-title inherited">
+      <li class="section-title">
         <a href="simple_result/Result-class.html#instance-properties">Properties</a>
       </li>
+      <li><a href="simple_result/Result/failure.html">failure</a></li>
+      <li><a href="simple_result/Result/isFailure.html">isFailure</a></li>
+      <li><a href="simple_result/Result/isSuccess.html">isSuccess</a></li>
+      <li><a href="simple_result/Result/success.html">success</a></li>
       <li class="inherited"><a href="simple_result/Result/hashCode.html">hashCode</a></li>
       <li class="inherited"><a href="simple_result/Result/runtimeType.html">runtimeType</a></li>
     
       <li class="section-title"><a href="simple_result/Result-class.html#instance-methods">Methods</a></li>
+      <li><a href="simple_result/Result/map.html">map</a></li>
       <li><a href="simple_result/Result/when.html">when</a></li>
       <li class="inherited"><a href="simple_result/Result/noSuchMethod.html">noSuchMethod</a></li>
       <li class="inherited"><a href="simple_result/Result/toString.html">toString</a></li>
@@ -203,7 +250,7 @@ functions success and failure.
 <footer>
   <span class="no-break">
     simple_result
-      0.0.2
+      0.1.2
   </span>
 
   <!-- footer-text placeholder -->

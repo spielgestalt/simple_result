@@ -57,32 +57,58 @@
 <h2 id="introduction">Introduction</h2>
 <p>I needed a simple Result like Swift's <a href="https://developer.apple.com/documentation/swift/result">Result</a>.</p>
 <p>I have seen people using <a href="https://pub.dev/packages/dartz">dartz</a> with the Either type. But for me, thats not really clear and readable. </p>
-<p>Other solutions like <a href="https://pub.dev/packages/result">result</a> and <a href="https://pub.dev/packages/super_enum">super_enum</a> did not fit my needs neither. So here is my suggestion.</p>
+<p>Other solutions like <a href="https://pub.dev/packages/result">result</a> and <a href="https://pub.dev/packages/super_enum">super_enum</a> did not fit my needs neither. So here is my solution.</p>
 <h2 id="installation">Installation</h2>
 <p>Add the following to you <code>pubspec.yaml</code> and replace <code>[version]</code> with the latest version:</p>
 <pre class="language-dart"><code class="language-dart">dependencies:
   simple_result: ^[version]
 
 </code></pre>
-<h2 id="example">Example</h2>
-<pre class="language-import"><code class="language-import">
-abstract class Failure {}
-
-class SomeFailure extends Failure {}
-
-void main() async {
-	final result = await fetchUser();
-	final resultAsString = result.when(
-		success:(user) =&gt; user.username, 
-		failure:(failre) =&gt; failire.toString());
-	print(resultAsString);
-}
-Future&lt;Result&lt;User,Failure&gt;&gt;fetchUser() async {
-	if (ok){
-		return Result.success(user);
+<p>import with</p>
+<pre class="language-dart"><code class="language-dart">import 'package:simple_result/simple_result.dart';
+</code></pre>
+<h2 id="usage">Usage</h2>
+<p>To create a Result use </p>
+<pre class="language-dart"><code class="language-dart">Result&lt;ValueType, FailureType&gt;.success(value)
+</code></pre>
+<p>or </p>
+<pre class="language-dart"><code class="language-dart">Result&lt;ValueType, FailureType&gt;.failure(failure)
+</code></pre>
+<p>You can then 'iterate' over success or failure with:</p>
+<pre class="language-dart"><code class="language-dart">result.when(
+	success(value) {
+		//doSomeThing with success value
+	},
+	failure(failure) {
+		//doSomeThing with failure
 	}
-	return Result.failure(SomeFailure());
-} 
+);
+</code></pre>
+<p>You can map the Result value type with map:</p>
+<pre class="language-dart"><code class="language-dart">Result&lt;User, Failure&gt;.success(user);
+final stringResult = result.map((user) =&gt; user.username);  
+// stringResult is of Type Result&lt;String, Failure&gt;
+
+</code></pre>
+<p>You can use convenience methods on a Result</p>
+<pre class="language-dart"><code class="language-dart">final userResult = Result&lt;User, Failure&gt;.success(user);
+userResult.isSuccess; // -&gt; true
+userResult.success; // -&gt; user object.
+</code></pre>
+<h2 id="example">Example</h2>
+<pre class="language-dart"><code class="language-dart">import 'package:simple_result/simple_result.dart';
+final mySuccessResult = Result&lt;String,Failure&gt;.success('success value');
+final myErrorResult = Result&lt;String,Failure&gt;.failure(MyFailure());
+
+mySuccessResult.isSuccess // -&gt; true
+mySuccessResult.success; // -&gt; 'success value'
+
+final myStringResult = mySuccessResult
+	.when(
+		success:(value) =&gt; value.toString(), 
+		failure:(_) =&gt; 'ERROR');
+mySuccessResult.map((value) =&gt; 'StringResult'); // maps to Result&lt;String, Failure&gt;()
+
 </code></pre>
 <p>see more in <a href="https://github.com/spielgestalt/simple_result/blob/master/example/main.dart">example/main.dart</a></p>
       </section>
@@ -94,7 +120,10 @@ Future&lt;Result&lt;User,Failure&gt;&gt;fetchUser() async {
               <span class="name"><a href="simple_result/simple_result-library.html">simple_result</a></span>             
             </dt>
             <dd>
-              
+              A simple result wrapper
+Use Result&lt;ValueType, FailureType.success(value);
+or
+Result&lt;ValueType, FailureType.failure(failure);
             </dd>          </dl>
         </section>
 
@@ -108,7 +137,7 @@ Future&lt;Result&lt;User,Failure&gt;&gt;fetchUser() async {
 <footer>
   <span class="no-break">
     simple_result
-      0.0.2
+      0.1.2
   </span>
 
   <!-- footer-text placeholder -->
