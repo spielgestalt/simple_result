@@ -1,4 +1,5 @@
 import 'package:meta/meta.dart';
+
 /// A simple Result wrapper.
 ///
 /// You can declare Success and Failure Types as Generic Type..

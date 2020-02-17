@@ -32,6 +32,5 @@ void main() {
       expect(result, isA<Example>());
       expect(result.username, exampleUsername);
     });
-
   });
 }
