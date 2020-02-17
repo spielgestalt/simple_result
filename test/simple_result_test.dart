@@ -13,7 +13,7 @@ abstract class Failure implements Exception {}
 class ExampleFailure implements Failure {}
 
 void main() {
-  final exampleUsername = 'Bob';
+  const exampleUsername = 'Bob';
   final example = Example(username: exampleUsername);
   group('with defined generic results', () {
     test('should return success', () {

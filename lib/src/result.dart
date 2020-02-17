@@ -23,14 +23,37 @@ class Result<Success, Failure> {
     return Result._(isSuccess: false, value: null, failure: failure);
   }
 
+  /// returns true, if the result is in success state.
+  bool get isSuccess => _isSuccess;
+
+  /// returns true, if the result is in failure state.
+  bool get isFailure => _isSuccess == false;
+
+  /// returns the success value or null if there is a failure.
+  Success get success => _value;
+
+  /// returns the failure or null if the state is success.
+  Failure get failure => _failure;
+
   /// Somehow like a switch case statement. You can return a Value from the
   /// functions success and failure.
-  R when<R>(
-      {@required R Function(Success) success,
-      @required R Function(Failure) failure}) {
+  ResultType when<ResultType>(
+      {@required ResultType Function(Success) success,
+      @required ResultType Function(Failure) failure}) {
     if (_isSuccess) {
       return success(_value);
     }
     return failure(_failure);
+  }
+
+  /// Use map to convert a Result from one value type to another.
+  /// Changes only value type, not the Failure.
+  Result<ResultType, Failure> map<ResultType>(
+      ResultType Function(Success) mapper) {
+    if (_isSuccess) {
+      return Result<ResultType, Failure>.success(mapper(_value));
+    } else {
+      return Result<ResultType, Failure>.failure(_failure);
+    }
   }
 }

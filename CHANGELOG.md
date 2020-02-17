@@ -1,3 +1,8 @@
+## 0.1.2
+* adds support to map the result to a different value type.
+* adds isSuccess and isFailure
+* adds success getter for the value
+* adds failure getter for the failure
 ## 0.1.1
 * formatting again.
 ## 0.1.0
