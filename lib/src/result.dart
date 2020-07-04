@@ -48,6 +48,13 @@ class Result<Success, Failure> {
     return failure(_failure);
   }
 
+  Success getOrElse<ResultType>(Success Function() successFunction) {
+    if (_isSuccess) {
+      return _value;
+    }
+    return successFunction();
+  }
+
   /// Use map to convert a Result from one value type to another.
   /// Changes only value type, not the Failure.
   Result<ResultType, Failure> map<ResultType>(

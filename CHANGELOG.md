@@ -1,3 +1,5 @@
+## 0.1.5
+* adds getOrElse support
 ## 0.1.4
 * adds flatMap support
 ## 0.1.3
