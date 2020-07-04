@@ -1,3 +1,5 @@
+## 0.1.6
+* changes Result to SimpleResult. package https://pub.dev/packages/freezed had some issues.
 ## 0.1.5
 * adds getOrElse support
 ## 0.1.4

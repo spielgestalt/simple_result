@@ -4,3 +4,4 @@
 pubspec.lock
 /.idea
 .DS_Store
+/.vscode/launch.json

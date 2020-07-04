@@ -1,28 +1,28 @@
 import 'package:meta/meta.dart';
 
-typedef int FlatMapFunction<A, B>(double a);
+typedef FlatMapFunction<A, B> = int Function(double a);
 
 /// A simple Result wrapper.
 ///
 /// You can declare Success and Failure Types as Generic Type..
-class Result<Success, Failure> {
+class SimpleResult<Success, Failure> {
   final bool _isSuccess;
   final Success _value;
   final Failure _failure;
 
-  Result._({bool isSuccess, Success value, Failure failure})
+  SimpleResult._({bool isSuccess, Success value, Failure failure})
       : _isSuccess = isSuccess,
         _value = value,
         _failure = failure;
 
   /// Marks this Result as successful.
-  factory Result.success(Success value) {
-    return Result._(isSuccess: true, value: value, failure: null);
+  factory SimpleResult.success(Success value) {
+    return SimpleResult._(isSuccess: true, value: value);
   }
 
   /// Marks this Result as failing
-  factory Result.failure(Failure failure) {
-    return Result._(isSuccess: false, value: null, failure: failure);
+  factory SimpleResult.failure(Failure failure) {
+    return SimpleResult._(isSuccess: false, failure: failure);
   }
 
   /// returns true, if the result is in success state.
@@ -57,12 +57,12 @@ class Result<Success, Failure> {
 
   /// Use map to convert a Result from one value type to another.
   /// Changes only value type, not the Failure.
-  Result<ResultType, Failure> map<ResultType>(
+  SimpleResult<ResultType, Failure> map<ResultType>(
       ResultType Function(Success) mapper) {
     if (_isSuccess) {
-      return Result<ResultType, Failure>.success(mapper(_value));
+      return SimpleResult<ResultType, Failure>.success(mapper(_value));
     } else {
-      return Result<ResultType, Failure>.failure(_failure);
+      return SimpleResult<ResultType, Failure>.failure(_failure);
     }
   }
 
@@ -71,12 +71,12 @@ class Result<Success, Failure> {
       Function1<ResultType, Failure> f) {
     if (_isSuccess) {}
   }*/
-  Result<ResultType, Failure> flatMap<ResultType>(
-      Result<ResultType, Failure> Function(Success) mapper) {
+  SimpleResult<ResultType, Failure> flatMap<ResultType>(
+      SimpleResult<ResultType, Failure> Function(Success) mapper) {
     if (_isSuccess) {
       final result = mapper(_value);
       return result;
     }
-    return Result<ResultType, Failure>.failure(_failure);
+    return SimpleResult<ResultType, Failure>.failure(_failure);
   }
 }

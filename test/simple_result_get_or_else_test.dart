@@ -9,30 +9,31 @@ class ExceedingLengthFailure<T> extends ValueFailure<T> {}
 
 class WrongCharacter<T> extends ValueFailure<T> {}
 
-Result<String, ValueFailure<String>> validateMaxStringLength(
+SimpleResult<String, ValueFailure<String>> validateMaxStringLength(
   String input,
   int maxLength,
 ) {
   if (input.length <= maxLength) {
-    return Result.success(input);
+    return SimpleResult.success(input);
   } else {
-    return Result.failure(ExceedingLengthFailure());
+    return SimpleResult.failure(ExceedingLengthFailure());
   }
 }
 
-Result<String, ValueFailure<String>> validateCharacters(String input) {
+SimpleResult<String, ValueFailure<String>> validateCharacters(String input) {
   if (input.contains("-")) {
-    return Result.failure(WrongCharacter());
+    return SimpleResult.failure(WrongCharacter());
   } else {
-    return Result.success(input);
+    return SimpleResult.success(input);
   }
 }
 
-Result<String, ValueFailure<String>> validateStringNotEmpty(String input) {
+SimpleResult<String, ValueFailure<String>> validateStringNotEmpty(
+    String input) {
   if (input.isEmpty) {
-    return Result.failure(EmptyFailure());
+    return SimpleResult.failure(EmptyFailure());
   } else {
-    return Result.success(input);
+    return SimpleResult.success(input);
   }
 }
 

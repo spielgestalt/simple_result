@@ -9,40 +9,41 @@ class ExceedingLengthFailure<T> extends ValueFailure<T> {}
 
 class WrongCharacter<T> extends ValueFailure<T> {}
 
-Result<String, ValueFailure<String>> validateMaxStringLength(
+SimpleResult<String, ValueFailure<String>> validateMaxStringLength(
   String input,
   int maxLength,
 ) {
   if (input.length <= maxLength) {
-    return Result.success(input);
+    return SimpleResult.success(input);
   } else {
-    return Result.failure(ExceedingLengthFailure());
+    return SimpleResult.failure(ExceedingLengthFailure());
   }
 }
 
-Result<String, ValueFailure<String>> validateCharacters(String input) {
+SimpleResult<String, ValueFailure<String>> validateCharacters(String input) {
   if (input.contains("-")) {
-    return Result.failure(WrongCharacter());
+    return SimpleResult.failure(WrongCharacter());
   } else {
-    return Result.success(input);
+    return SimpleResult.success(input);
   }
 }
 
-Result<String, ValueFailure<String>> validateStringNotEmpty(String input) {
+SimpleResult<String, ValueFailure<String>> validateStringNotEmpty(
+    String input) {
   if (input.isEmpty) {
-    return Result.failure(EmptyFailure());
+    return SimpleResult.failure(EmptyFailure());
   } else {
-    return Result.success(input);
+    return SimpleResult.success(input);
   }
 }
 
 void main() {
-  final correctString = "12345";
-  final wrongCharacterString = "123-456";
-  final emptyString = "";
-  final maxLength = 10;
-  final tooLongString = "12345678901";
-  final wrongCharacterAndTooLong = "12345-67890";
+  const correctString = "12345";
+  const wrongCharacterString = "123-456";
+  const emptyString = "";
+  const maxLength = 10;
+  const tooLongString = "12345678901";
+  const wrongCharacterAndTooLong = "12345-67890";
 
   group('using a correct sentence', () {
     test('should flatMap to success', () {

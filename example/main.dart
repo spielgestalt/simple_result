@@ -40,12 +40,12 @@ void main() async {
   print(okResult.success?.username); // bob
 }
 
-Future<Result<User, Failure>> fetchFromServer({bool withError}) async {
+Future<SimpleResult<User, Failure>> fetchFromServer({bool withError}) async {
   await Future.delayed(const Duration(milliseconds: 100));
   if (withError) {
-    return Result.failure(SomeFailure());
+    return SimpleResult.failure(SomeFailure());
   } else {
-    return Result.success(const User(username: 'bob'));
+    return SimpleResult.success(const User(username: 'bob'));
   }
 }
 
