@@ -2,6 +2,5 @@
 /// Use Result<ValueType, FailureType.success(value);
 /// or
 /// Result<ValueType, FailureType.failure(failure);
-library simple_result;
-
+import 'src/result.dart';
 export 'src/result.dart';
