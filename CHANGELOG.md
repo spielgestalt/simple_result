@@ -1,3 +1,5 @@
+## 0.1.4
+* adds flatMap support
 ## 0.1.3
 * reorganizes imports
 ## 0.1.2

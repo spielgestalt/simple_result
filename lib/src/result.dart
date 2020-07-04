@@ -1,5 +1,7 @@
 import 'package:meta/meta.dart';
 
+typedef int FlatMapFunction<A, B>(double a);
+
 /// A simple Result wrapper.
 ///
 /// You can declare Success and Failure Types as Generic Type..
@@ -55,5 +57,19 @@ class Result<Success, Failure> {
     } else {
       return Result<ResultType, Failure>.failure(_failure);
     }
+  }
+
+  // Either<L, R2> flatMap<R2>(Function1<R, Either<L, R2>> f) => fold(left, f);
+  /*Result<ResultType, Failure> flatMap<ResultType>(
+      Function1<ResultType, Failure> f) {
+    if (_isSuccess) {}
+  }*/
+  Result<ResultType, Failure> flatMap<ResultType>(
+      Result<ResultType, Failure> Function(Success) mapper) {
+    if (_isSuccess) {
+      final result = mapper(_value);
+      return result;
+    }
+    return Result<ResultType, Failure>.failure(_failure);
   }
 }

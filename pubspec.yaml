@@ -1,5 +1,5 @@
 name: simple_result
-version: 0.1.3
+version: 0.1.4
 homepage: https://github.com/spielgestalt/simple_result.git
 description: A simple posibility to return a Result with eiter success or failure.
 environment:
