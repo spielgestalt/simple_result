@@ -83,4 +83,12 @@ class SimpleResult<Success, Failure> extends Equatable{
 
   @override  
   List<Object> get props => [_value, _failure, _isSuccess];
+
+  @override
+  String toString() {
+    if (_isSuccess){
+      return  _value == null ? "Success: (null)" : 'Success: ${_value.toString()}';
+    }
+    return _failure == null ? 'Failure: (null)' : 'Failure: ${_failure.toString()}';
+  }
 }

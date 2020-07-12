@@ -1,3 +1,5 @@
+## 0.1.8
+* adds toString support
 ## 0.1.7
 * adds equatable support
 ## 0.1.6
