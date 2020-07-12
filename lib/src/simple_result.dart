@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 typedef FlatMapFunction<A, B> = int Function(double a);
@@ -5,7 +6,7 @@ typedef FlatMapFunction<A, B> = int Function(double a);
 /// A simple Result wrapper.
 ///
 /// You can declare Success and Failure Types as Generic Type..
-class SimpleResult<Success, Failure> {
+class SimpleResult<Success, Failure> extends Equatable{
   final bool _isSuccess;
   final Success _value;
   final Failure _failure;
@@ -79,4 +80,7 @@ class SimpleResult<Success, Failure> {
     }
     return SimpleResult<ResultType, Failure>.failure(_failure);
   }
+
+  @override  
+  List<Object> get props => [_value, _failure, _isSuccess];
 }

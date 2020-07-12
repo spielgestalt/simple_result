@@ -1,3 +1,5 @@
+## 0.1.7
+* adds equatable support
 ## 0.1.6
 * changes Result to SimpleResult. package https://pub.dev/packages/freezed had some issues.
 ## 0.1.5
