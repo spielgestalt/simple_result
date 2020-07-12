@@ -44,7 +44,13 @@ class SimpleResult<Success, Failure> extends Equatable{
       {@required ResultType Function(Success) success,
       @required ResultType Function(Failure) failure}) {
     if (_isSuccess) {
+      if(success == null){
+        return null;
+      }
       return success(_value);
+    }
+    if (failure == null){
+      return null;
     }
     return failure(_failure);
   }

@@ -43,6 +43,7 @@ void main() {
     group('with a success result', () {
       final exampleResult =
           SimpleResult<Example, Failure>.success(exampleObject);
+          
       test('should return isSuccess with the value', () {
         expect(exampleResult.isSuccess, isTrue);
 
@@ -51,6 +52,15 @@ void main() {
       test('should return isFailure false and null as failure object', () {
         expect(exampleResult.isFailure, isFalse);
         expect(exampleResult.failure, isNull);
+      });
+      test('should not crash with a null as succes or failure case', (){
+        final result = exampleResult.when(success: null, failure: null);
+        expect(result, isNull);
+      });
+      test('should not crash with a null as succes or failure case', (){
+        final errorResult = SimpleResult<Example, Failure>.failure(ExampleFailure());
+        final result = errorResult.when(success: null, failure: null);
+        expect(result, isNull);
       });
     });
     group('with a failure result', () {

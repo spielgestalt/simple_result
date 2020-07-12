@@ -1,3 +1,5 @@
+## 0.1.9
+* accepts null functions in .when
 ## 0.1.8
 * adds toString support
 ## 0.1.7
