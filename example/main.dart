@@ -1,11 +1,10 @@
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 import 'package:simple_result/simple_result.dart';
 
 class User extends Equatable {
   final String username;
 
-  const User({@required this.username});
+  const User({required this.username});
 
   @override
   List<Object> get props => [username];
@@ -28,19 +27,22 @@ class SomeFailure extends Failure {
 void main() async {
   final okResult = await fetchFromServer(withError: false);
   final username = okResult.when(
-      success: (user) => user.username, failure: (failure) => "ERROR:$failure");
+      success: (user) => user!.username,
+      failure: (failure) => "ERROR:$failure");
   print(username); //bob
 
   final errorResult = await fetchFromServer(withError: true);
   final usernameNotOk = errorResult.when(
-      success: (user) => user.username, failure: (failure) => "ERROR:$failure");
+      success: (user) => user!.username,
+      failure: (failure) => "ERROR:$failure");
   print(usernameNotOk); // ERROR:Some Failure happened
 
   print(okResult.failure); // null
   print(okResult.success?.username); // bob
 }
 
-Future<SimpleResult<User, Failure>> fetchFromServer({bool withError}) async {
+Future<SimpleResult<User, Failure>> fetchFromServer(
+    {required bool withError}) async {
   await Future.delayed(const Duration(milliseconds: 100));
   if (withError) {
     return SimpleResult.failure(SomeFailure());

@@ -1,16 +1,15 @@
-import 'package:meta/meta.dart';
 import 'package:simple_result/simple_result.dart';
 import 'package:test/test.dart';
 
 class User {
   final String name;
 
-  User({@required this.name});
+  User({required this.name});
 }
 
 class NameFailure implements Exception {}
 
-SimpleResult<List<User>, NameFailure> getUsers({@required bool doFail}) {
+SimpleResult<List<User>, NameFailure> getUsers({required bool doFail}) {
   if (doFail) {
     return SimpleResult.failure(NameFailure());
   }
@@ -21,6 +20,6 @@ void main() {
   test('check list resolution', () {
     final result = getUsers(doFail: false);
     expect(result.isSuccess, isTrue);
-    expect(result.success.length, 2);
+    expect(result.success!.length, 2);
   });
 }

@@ -20,17 +20,17 @@ SimpleResult<String, ValueFailure<String>> validateMaxStringLength(
   }
 }
 
-SimpleResult<String, ValueFailure<String>> validateCharacters(String input) {
-  if (input.contains("-")) {
+SimpleResult<String?, ValueFailure<String>> validateCharacters(String? input) {
+  if (input!.contains("-")) {
     return SimpleResult.failure(WrongCharacter());
   } else {
     return SimpleResult.success(input);
   }
 }
 
-SimpleResult<String, ValueFailure<String>> validateStringNotEmpty(
-    String input) {
-  if (input.isEmpty) {
+SimpleResult<String?, ValueFailure<String>> validateStringNotEmpty(
+    String? input) {
+  if (input!.isEmpty) {
     return SimpleResult.failure(EmptyFailure());
   } else {
     return SimpleResult.success(input);

@@ -1,3 +1,5 @@
+## 1.0.0
+* implements null safety
 ## 0.1.9
 * accepts null functions in .when
 ## 0.1.8

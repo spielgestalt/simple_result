@@ -1,11 +1,10 @@
 import 'package:simple_result/simple_result.dart';
 import 'package:test/test.dart';
-import 'package:meta/meta.dart';
 
 class Example {
   final String username;
 
-  Example({@required this.username});
+  Example({required this.username});
 }
 
 abstract class Failure implements Exception {}
@@ -20,7 +19,7 @@ void main() {
       final exampleResult =
           SimpleResult<Example, Failure>.success(exampleObject);
       final stringResult =
-          exampleResult.map((example) => 'Hello ${example.username}');
+          exampleResult.map((example) => 'Hello ${example!.username}');
       expect(stringResult, isA<SimpleResult<String, Failure>>());
 
       final result = stringResult.when(success: (name) => name, failure: null);
@@ -34,7 +33,7 @@ void main() {
       expect(errorResult, isA<SimpleResult<Example, Failure>>());
       final errorStringResult =
           errorResult.map((value) => 'Error should be null');
-      expect(errorStringResult, isA<SimpleResult<String, Failure>>());
+      expect(errorStringResult, isA<SimpleResult<String, Failure?>>());
       final errorMessage = errorStringResult.when(
           success: (value) => 'Shoult not be!',
           failure: (_) => 'ERROR Message');
@@ -43,7 +42,7 @@ void main() {
     group('with a success result', () {
       final exampleResult =
           SimpleResult<Example, Failure>.success(exampleObject);
-          
+
       test('should return isSuccess with the value', () {
         expect(exampleResult.isSuccess, isTrue);
 
@@ -53,12 +52,13 @@ void main() {
         expect(exampleResult.isFailure, isFalse);
         expect(exampleResult.failure, isNull);
       });
-      test('should not crash with a null as succes or failure case', (){
+      test('should not crash with a null as succes or failure case', () {
         final result = exampleResult.when(success: null, failure: null);
         expect(result, isNull);
       });
-      test('should not crash with a null as succes or failure case', (){
-        final errorResult = SimpleResult<Example, Failure>.failure(ExampleFailure());
+      test('should not crash with a null as succes or failure case', () {
+        final errorResult =
+            SimpleResult<Example, Failure>.failure(ExampleFailure());
         final result = errorResult.when(success: null, failure: null);
         expect(result, isNull);
       });

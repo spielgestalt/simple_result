@@ -1,11 +1,10 @@
 import 'package:simple_result/simple_result.dart';
 import 'package:test/test.dart';
-import 'package:meta/meta.dart';
 
 class Example {
   final String username;
 
-  Example({@required this.username});
+  Example({required this.username});
 }
 
 abstract class Failure implements Exception {}
@@ -20,7 +19,7 @@ void main() {
       final successResult = SimpleResult.success(example);
 
       final result = successResult.when(
-          success: (example) => example.username, failure: (_) => 'failure');
+          success: (example) => example!.username, failure: (_) => 'failure');
       expect(result, isA<String>());
     });
   });
@@ -28,7 +27,7 @@ void main() {
     test('should return a valid type', () {
       final successResult = SimpleResult<Example, Failure>.success(example);
       final result = successResult.when(
-          success: (example) => example, failure: (_) => null);
+          success: (example) => example, failure: (_) => null)!;
       expect(result, isA<Example>());
       expect(result.username, exampleUsername);
     });
