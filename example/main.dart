@@ -27,27 +27,30 @@ class SomeFailure extends Failure {
 void main() async {
   final okResult = await fetchFromServer(withError: false);
   final username = okResult.when(
-      success: (user) => user!.username,
-      failure: (failure) => "ERROR:$failure");
+    success: (user) => user!.username,
+    failure: (failure) => "ERROR:$failure",
+  );
   print(username); //bob
 
   final errorResult = await fetchFromServer(withError: true);
   final usernameNotOk = errorResult.when(
-      success: (user) => user!.username,
-      failure: (failure) => "ERROR:$failure");
+    success: (user) => user!.username,
+    failure: (failure) => "ERROR:$failure",
+  );
   print(usernameNotOk); // ERROR:Some Failure happened
 
   print(okResult.failure); // null
   print(okResult.success?.username); // bob
 }
 
-Future<SimpleResult<User, Failure>> fetchFromServer(
-    {required bool withError}) async {
+Future<Result<User, Failure>> fetchFromServer({
+  required bool withError,
+}) async {
   await Future.delayed(const Duration(milliseconds: 100));
   if (withError) {
-    return SimpleResult.failure(SomeFailure());
+    return Result.failure(SomeFailure());
   } else {
-    return SimpleResult.success(const User(username: 'bob'));
+    return Result.success(const User(username: 'bob'));
   }
 }
 

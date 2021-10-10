@@ -16,18 +16,22 @@ void main() {
   final example = Example(username: exampleUsername);
   group('with defined generic results', () {
     test('should return success', () {
-      final successResult = SimpleResult.success(example);
+      final successResult = Result.success(example);
 
       final result = successResult.when(
-          success: (example) => example!.username, failure: (_) => 'failure');
+        success: (example) => example!.username,
+        failure: (_) => 'failure',
+      );
       expect(result, isA<String>());
     });
   });
   group('with defined results', () {
     test('should return a valid type', () {
-      final successResult = SimpleResult<Example, Failure>.success(example);
+      final successResult = Result<Example, Failure>.success(example);
       final result = successResult.when(
-          success: (example) => example, failure: (_) => null)!;
+        success: (example) => example,
+        failure: (_) => null,
+      )!;
       expect(result, isA<Example>());
       expect(result.username, exampleUsername);
     });

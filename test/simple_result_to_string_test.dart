@@ -11,20 +11,20 @@ class MyFailure implements Exception {
 void main() {
   test('toString for a success object', () {
     const valueString = 'A String';
-    final simpleStringResult = SimpleResult.success(valueString);
+    final simpleStringResult = Result.success(valueString);
     expect(simpleStringResult.toString(), 'Success: $valueString');
   });
   test('toString for a success null object', () {
-    final simpleStringResult = SimpleResult.success(null);
+    final simpleStringResult = Result.success(null);
     expect(simpleStringResult.toString(), 'Success: (null)');
   });
 
   test('toString for a failure object', () {
-    final simpleStringResult = SimpleResult.failure(MyFailure());
+    final simpleStringResult = Result.failure(MyFailure());
     expect(simpleStringResult.toString(), 'Failure: MyFailure');
   });
   test('toString for a failure null object', () {
-    final simpleStringResult = SimpleResult.failure(null);
+    final simpleStringResult = Result.failure(null);
     expect(simpleStringResult.toString(), 'Failure: (null)');
   });
 }

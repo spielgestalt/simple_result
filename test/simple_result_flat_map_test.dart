@@ -9,31 +9,32 @@ class ExceedingLengthFailure<T> extends ValueFailure<T> {}
 
 class WrongCharacter<T> extends ValueFailure<T> {}
 
-SimpleResult<String, ValueFailure<String>> validateMaxStringLength(
+Result<String, ValueFailure<String>> validateMaxStringLength(
   String input,
   int maxLength,
 ) {
   if (input.length <= maxLength) {
-    return SimpleResult.success(input);
+    return Result.success(input);
   } else {
-    return SimpleResult.failure(ExceedingLengthFailure());
+    return Result.failure(ExceedingLengthFailure());
   }
 }
 
-SimpleResult<String?, ValueFailure<String>> validateCharacters(String? input) {
+Result<String?, ValueFailure<String>> validateCharacters(String? input) {
   if (input!.contains("-")) {
-    return SimpleResult.failure(WrongCharacter());
+    return Result.failure(WrongCharacter());
   } else {
-    return SimpleResult.success(input);
+    return Result.success(input);
   }
 }
 
-SimpleResult<String?, ValueFailure<String>> validateStringNotEmpty(
-    String? input) {
+Result<String?, ValueFailure<String>> validateStringNotEmpty(
+  String? input,
+) {
   if (input!.isEmpty) {
-    return SimpleResult.failure(EmptyFailure());
+    return Result.failure(EmptyFailure());
   } else {
-    return SimpleResult.success(input);
+    return Result.success(input);
   }
 }
 
@@ -63,10 +64,14 @@ void main() {
           .flatMap(validateCharacters);
       expect(result.isSuccess, isFalse);
       expect(result.isFailure, isTrue);
-      expect(result.failure.runtimeType,
-          ExceedingLengthFailure<String>().runtimeType);
-      expect(result.failure.runtimeType,
-          isNot(WrongCharacter<String>().runtimeType));
+      expect(
+        result.failure.runtimeType,
+        ExceedingLengthFailure<String>().runtimeType,
+      );
+      expect(
+        result.failure.runtimeType,
+        isNot(WrongCharacter<String>().runtimeType),
+      );
     });
   });
   group('using wrong characters', () {
@@ -77,8 +82,10 @@ void main() {
       expect(result.isSuccess, isFalse);
       expect(result.isFailure, isTrue);
       expect(result.failure.runtimeType, WrongCharacter<String>().runtimeType);
-      expect(result.failure.runtimeType,
-          isNot(ExceedingLengthFailure<String>().runtimeType));
+      expect(
+        result.failure.runtimeType,
+        isNot(ExceedingLengthFailure<String>().runtimeType),
+      );
     });
   });
   group('using empty sentences', () {
@@ -89,8 +96,10 @@ void main() {
       expect(result.isSuccess, isFalse);
       expect(result.isFailure, isTrue);
       expect(result.failure.runtimeType, EmptyFailure<String>().runtimeType);
-      expect(result.failure.runtimeType,
-          isNot(ExceedingLengthFailure<String>().runtimeType));
+      expect(
+        result.failure.runtimeType,
+        isNot(ExceedingLengthFailure<String>().runtimeType),
+      );
     });
   });
   group('using a combination of too long and wrong characters', () {
@@ -101,8 +110,10 @@ void main() {
               .flatMap(validateCharacters);
       expect(result.isSuccess, isFalse);
       expect(result.isFailure, isTrue);
-      expect(result.failure.runtimeType,
-          isNot(EmptyFailure<String>().runtimeType));
+      expect(
+        result.failure.runtimeType,
+        isNot(EmptyFailure<String>().runtimeType),
+      );
     });
   });
 }

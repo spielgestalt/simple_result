@@ -1,3 +1,5 @@
+## 1.0.1
+* rename SimpleResult to Result
 ## 1.0.0
 * implements null safety
 ## 0.1.9

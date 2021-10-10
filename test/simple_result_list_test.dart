@@ -9,11 +9,11 @@ class User {
 
 class NameFailure implements Exception {}
 
-SimpleResult<List<User>, NameFailure> getUsers({required bool doFail}) {
+Result<List<User>, NameFailure> getUsers({required bool doFail}) {
   if (doFail) {
-    return SimpleResult.failure(NameFailure());
+    return Result.failure(NameFailure());
   }
-  return SimpleResult.success([User(name: 'John'), User(name: 'Marry')]);
+  return Result.success([User(name: 'John'), User(name: 'Marry')]);
 }
 
 void main() {
