@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_declarations
+
 import 'package:test/test.dart';
 
 // ignore: avoid_relative_lib_imports
@@ -11,11 +13,11 @@ class MyFailure implements Exception {
 void main() {
   test('toString for a success object', () {
     const valueString = 'A String';
-    final simpleStringResult = Result.success(valueString);
+    final simpleStringResult = const Result.success(valueString);
     expect(simpleStringResult.toString(), 'Success: $valueString');
   });
   test('toString for a success null object', () {
-    final simpleStringResult = Result.success(null);
+    final simpleStringResult = const Result.success(null);
     expect(simpleStringResult.toString(), 'Success: (null)');
   });
 
@@ -24,7 +26,7 @@ void main() {
     expect(simpleStringResult.toString(), 'Failure: MyFailure');
   });
   test('toString for a failure null object', () {
-    final simpleStringResult = Result.failure(null);
+    final simpleStringResult = const Result.failure(null);
     expect(simpleStringResult.toString(), 'Failure: (null)');
   });
 }

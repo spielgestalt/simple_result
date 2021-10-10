@@ -8,6 +8,8 @@ I have seen people using [dartz](https://pub.dev/packages/dartz) with the Either
 
 Other solutions like [result](https://pub.dev/packages/result) and [super_enum](https://pub.dev/packages/super_enum) did not fit my needs neither. So here is my solution.
 
+This packages uses the [freezed](https://pub.dev/packages/freezed) package and adds some helper methods. Thank you for this great package!
+
 ## Installation
 Add the following to you `pubspec.yaml` and replace `[version]` with the latest version:
 
@@ -26,12 +28,12 @@ import 'package:simple_result/simple_result.dart';
 To create a Result use 
 
 ```dart
-SimpleResult<ValueType, FailureType>.success(value)
+Result<ValueType, FailureType>.success(value)
 ```
 or 
 
 ```dart
-SimpleResult<ValueType, FailureType>.failure(failure)
+Result<ValueType, FailureType>.failure(failure)
 ```
 
 You can then 'iterate' over success or failure with:
@@ -50,8 +52,8 @@ result.when(
 You can map the Result value type with map:
 
 ```dart
-SimpleResult<User, Failure>.success(user);
-final stringResult = result.map((user) => user.username);  
+Result<User, Failure>.success(user);
+final stringResult = result.mapSuccesss((user) => user.username);  
 // stringResult is of Type Result<String, Failure>
 
 ```
@@ -59,7 +61,7 @@ final stringResult = result.map((user) => user.username);
 You can use convenience methods on a Result
 
 ```dart
-final userResult = SimpleResult<User, Failure>.success(user);
+final userResult = Result<User, Failure>.success(user);
 userResult.isSuccess; // -> true
 userResult.success; // -> user object.
 ```
@@ -67,8 +69,8 @@ userResult.success; // -> user object.
 ## Example
 ```dart
 import 'package:simple_result/simple_result.dart';
-final mySuccessResult = SimpleResult<String,Failure>.success('success value');
-final myErrorResult = SimpleResult<String,Failure>.failure(MyFailure());
+final mySuccessResult = Result<String,Failure>.success('success value');
+final myErrorResult = Result<String,Failure>.failure(MyFailure());
 
 mySuccessResult.isSuccess // -> true
 mySuccessResult.success; // -> 'success value'

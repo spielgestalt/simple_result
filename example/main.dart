@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_void_async, avoid_print
 import 'package:equatable/equatable.dart';
 import 'package:simple_result/simple_result.dart';
 
@@ -27,14 +28,14 @@ class SomeFailure extends Failure {
 void main() async {
   final okResult = await fetchFromServer(withError: false);
   final username = okResult.when(
-    success: (user) => user!.username,
+    success: (user) => user.username,
     failure: (failure) => "ERROR:$failure",
   );
   print(username); //bob
 
   final errorResult = await fetchFromServer(withError: true);
   final usernameNotOk = errorResult.when(
-    success: (user) => user!.username,
+    success: (user) => user.username,
     failure: (failure) => "ERROR:$failure",
   );
   print(usernameNotOk); // ERROR:Some Failure happened
@@ -50,8 +51,6 @@ Future<Result<User, Failure>> fetchFromServer({
   if (withError) {
     return Result.failure(SomeFailure());
   } else {
-    return Result.success(const User(username: 'bob'));
+    return const Result.success(User(username: 'bob'));
   }
 }
-
-// ignore_for_file: avoid_void_async, avoid_print

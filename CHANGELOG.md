@@ -1,5 +1,5 @@
 ## 1.0.1
-* rename SimpleResult to Result
+* refactor from SimpleResult to Result and uses freezed
 ## 1.0.0
 * implements null safety
 ## 0.1.9

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_declarations
+
 import 'package:equatable/equatable.dart';
 import 'package:simple_result/simple_result.dart';
 import 'package:test/test.dart';
@@ -21,8 +23,8 @@ void main() {
   group('with two equal results', () {
     test('equal success results should be equal', () {
       const resultString = 'abc';
-      final result1 = Result<String, MyFailure>.success(resultString);
-      final result2 = Result<String, MyFailure>.success(resultString);
+      final result1 = const Result<String, MyFailure>.success(resultString);
+      final result2 = const Result<String, MyFailure>.success(resultString);
       expect(result1, result2);
     });
     test('equal failure results should be equal', () {
@@ -33,8 +35,8 @@ void main() {
     test('unequal success results should not be equal', () {
       const resultString = 'abc';
       const resultString2 = 'def';
-      final result1 = Result<String, MyFailure>.success(resultString);
-      final result2 = Result<String, MyFailure>.success(resultString2);
+      final result1 = const Result<String, MyFailure>.success(resultString);
+      final result2 = const Result<String, MyFailure>.success(resultString2);
       expect(result1, isNot(result2));
     });
     test('unequal failure results should not be equal', () {

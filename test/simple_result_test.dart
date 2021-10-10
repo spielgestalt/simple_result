@@ -19,7 +19,7 @@ void main() {
       final successResult = Result.success(example);
 
       final result = successResult.when(
-        success: (example) => example!.username,
+        success: (example) => example.username,
         failure: (_) => 'failure',
       );
       expect(result, isA<String>());

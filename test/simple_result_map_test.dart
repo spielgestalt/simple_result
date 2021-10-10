@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_declarations
+
 import 'package:simple_result/simple_result.dart';
 import 'package:test/test.dart';
 
@@ -18,20 +20,20 @@ void main() {
     test('should map to a new typed result', () {
       final exampleResult = Result<Example, Failure>.success(exampleObject);
       final stringResult =
-          exampleResult.map((example) => 'Hello ${example!.username}');
+          exampleResult.mapSuccess((example) => 'Hello ${example!.username}');
       expect(stringResult, isA<Result<String, Failure>>());
 
       final result =
           stringResult.when(success: (name) => name, failure: (_) => null);
       expect(result, 'Hello bob');
 
-      final boolResult = exampleResult.map((example) => true);
+      final boolResult = exampleResult.mapSuccess((example) => true);
       expect(boolResult, isA<Result<bool, Failure>>());
 
       final errorResult = Result<Example, Failure>.failure(ExampleFailure());
       expect(errorResult, isA<Result<Example, Failure>>());
       final errorStringResult =
-          errorResult.map((value) => 'Error should be null');
+          errorResult.mapSuccess((value) => 'Error should be null');
       expect(errorStringResult, isA<Result<String, Failure?>>());
       final errorMessage = errorStringResult.when(
         success: (value) => 'Shoult not be!',
@@ -77,7 +79,7 @@ void main() {
     });
     group('without declaring types', () {
       test('should have concrete value type and dynamic failure', () {
-        final myResult = Result.success('Some value');
+        final myResult = const Result.success('Some value');
 
         expect(myResult, isA<Result<String, dynamic>>());
       });
