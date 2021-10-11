@@ -1,3 +1,5 @@
+## 1.0.2
+* fixes export
 ## 1.0.1
 * refactor from SimpleResult to Result and uses freezed
 ## 1.0.0
