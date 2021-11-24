@@ -1,3 +1,5 @@
+## 1.0.3
+* updates freezed to current version
 ## 1.0.2
 * fixes export
 ## 1.0.1
