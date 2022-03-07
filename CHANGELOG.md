@@ -1,3 +1,5 @@
+## 1.0.4
+* updates dependencies
 ## 1.0.3
 * updates freezed to current version
 ## 1.0.2
