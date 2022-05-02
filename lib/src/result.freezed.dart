@@ -12,27 +12,7 @@ part of 'result.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ResultTearOff {
-  const _$ResultTearOff();
-
-  _Success<Success, Failure> success<Success, Failure>(Success success) {
-    return _Success<Success, Failure>(
-      success,
-    );
-  }
-
-  _Failure<Success, Failure> failure<Success, Failure>(Failure failure) {
-    return _Failure<Success, Failure>(
-      failure,
-    );
-  }
-}
-
-/// @nodoc
-const $Result = _$ResultTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Result<Success, Failure> {
@@ -217,10 +197,10 @@ class _$_Success<Success, Failure> extends _Success<Success, Failure> {
 }
 
 abstract class _Success<Success, Failure> extends Result<Success, Failure> {
-  const factory _Success(Success success) = _$_Success<Success, Failure>;
+  const factory _Success(final Success success) = _$_Success<Success, Failure>;
   const _Success._() : super._();
 
-  Success get success;
+  Success get success => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$SuccessCopyWith<Success, Failure, _Success<Success, Failure>>
       get copyWith => throw _privateConstructorUsedError;
@@ -350,10 +330,10 @@ class _$_Failure<Success, Failure> extends _Failure<Success, Failure> {
 }
 
 abstract class _Failure<Success, Failure> extends Result<Success, Failure> {
-  const factory _Failure(Failure failure) = _$_Failure<Success, Failure>;
+  const factory _Failure(final Failure failure) = _$_Failure<Success, Failure>;
   const _Failure._() : super._();
 
-  Failure get failure;
+  Failure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$FailureCopyWith<Success, Failure, _Failure<Success, Failure>>
       get copyWith => throw _privateConstructorUsedError;
