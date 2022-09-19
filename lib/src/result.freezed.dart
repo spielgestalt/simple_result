@@ -74,30 +74,30 @@ class _$ResultCopyWithImpl<Success, Failure, $Res>
 }
 
 /// @nodoc
-abstract class _$SuccessCopyWith<Success, Failure, $Res> {
-  factory _$SuccessCopyWith(_Success<Success, Failure> value,
-          $Res Function(_Success<Success, Failure>) then) =
-      __$SuccessCopyWithImpl<Success, Failure, $Res>;
+abstract class _$$_SuccessCopyWith<Success, Failure, $Res> {
+  factory _$$_SuccessCopyWith(_$_Success<Success, Failure> value,
+          $Res Function(_$_Success<Success, Failure>) then) =
+      __$$_SuccessCopyWithImpl<Success, Failure, $Res>;
   $Res call({Success success});
 }
 
 /// @nodoc
-class __$SuccessCopyWithImpl<Success, Failure, $Res>
+class __$$_SuccessCopyWithImpl<Success, Failure, $Res>
     extends _$ResultCopyWithImpl<Success, Failure, $Res>
-    implements _$SuccessCopyWith<Success, Failure, $Res> {
-  __$SuccessCopyWithImpl(_Success<Success, Failure> _value,
-      $Res Function(_Success<Success, Failure>) _then)
-      : super(_value, (v) => _then(v as _Success<Success, Failure>));
+    implements _$$_SuccessCopyWith<Success, Failure, $Res> {
+  __$$_SuccessCopyWithImpl(_$_Success<Success, Failure> _value,
+      $Res Function(_$_Success<Success, Failure>) _then)
+      : super(_value, (v) => _then(v as _$_Success<Success, Failure>));
 
   @override
-  _Success<Success, Failure> get _value =>
-      super._value as _Success<Success, Failure>;
+  _$_Success<Success, Failure> get _value =>
+      super._value as _$_Success<Success, Failure>;
 
   @override
   $Res call({
     Object? success = freezed,
   }) {
-    return _then(_Success<Success, Failure>(
+    return _then(_$_Success<Success, Failure>(
       success == freezed
           ? _value.success
           : success // ignore: cast_nullable_to_non_nullable
@@ -118,7 +118,7 @@ class _$_Success<Success, Failure> extends _Success<Success, Failure> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Success<Success, Failure> &&
+            other is _$_Success<Success, Failure> &&
             const DeepCollectionEquality().equals(other.success, success));
   }
 
@@ -128,10 +128,9 @@ class _$_Success<Success, Failure> extends _Success<Success, Failure> {
 
   @JsonKey(ignore: true)
   @override
-  _$SuccessCopyWith<Success, Failure, _Success<Success, Failure>>
-      get copyWith =>
-          __$SuccessCopyWithImpl<Success, Failure, _Success<Success, Failure>>(
-              this, _$identity);
+  _$$_SuccessCopyWith<Success, Failure, _$_Success<Success, Failure>>
+      get copyWith => __$$_SuccessCopyWithImpl<Success, Failure,
+          _$_Success<Success, Failure>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -200,37 +199,37 @@ abstract class _Success<Success, Failure> extends Result<Success, Failure> {
   const factory _Success(final Success success) = _$_Success<Success, Failure>;
   const _Success._() : super._();
 
-  Success get success => throw _privateConstructorUsedError;
+  Success get success;
   @JsonKey(ignore: true)
-  _$SuccessCopyWith<Success, Failure, _Success<Success, Failure>>
+  _$$_SuccessCopyWith<Success, Failure, _$_Success<Success, Failure>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$FailureCopyWith<Success, Failure, $Res> {
-  factory _$FailureCopyWith(_Failure<Success, Failure> value,
-          $Res Function(_Failure<Success, Failure>) then) =
-      __$FailureCopyWithImpl<Success, Failure, $Res>;
+abstract class _$$_FailureCopyWith<Success, Failure, $Res> {
+  factory _$$_FailureCopyWith(_$_Failure<Success, Failure> value,
+          $Res Function(_$_Failure<Success, Failure>) then) =
+      __$$_FailureCopyWithImpl<Success, Failure, $Res>;
   $Res call({Failure failure});
 }
 
 /// @nodoc
-class __$FailureCopyWithImpl<Success, Failure, $Res>
+class __$$_FailureCopyWithImpl<Success, Failure, $Res>
     extends _$ResultCopyWithImpl<Success, Failure, $Res>
-    implements _$FailureCopyWith<Success, Failure, $Res> {
-  __$FailureCopyWithImpl(_Failure<Success, Failure> _value,
-      $Res Function(_Failure<Success, Failure>) _then)
-      : super(_value, (v) => _then(v as _Failure<Success, Failure>));
+    implements _$$_FailureCopyWith<Success, Failure, $Res> {
+  __$$_FailureCopyWithImpl(_$_Failure<Success, Failure> _value,
+      $Res Function(_$_Failure<Success, Failure>) _then)
+      : super(_value, (v) => _then(v as _$_Failure<Success, Failure>));
 
   @override
-  _Failure<Success, Failure> get _value =>
-      super._value as _Failure<Success, Failure>;
+  _$_Failure<Success, Failure> get _value =>
+      super._value as _$_Failure<Success, Failure>;
 
   @override
   $Res call({
     Object? failure = freezed,
   }) {
-    return _then(_Failure<Success, Failure>(
+    return _then(_$_Failure<Success, Failure>(
       failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -251,7 +250,7 @@ class _$_Failure<Success, Failure> extends _Failure<Success, Failure> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Failure<Success, Failure> &&
+            other is _$_Failure<Success, Failure> &&
             const DeepCollectionEquality().equals(other.failure, failure));
   }
 
@@ -261,10 +260,9 @@ class _$_Failure<Success, Failure> extends _Failure<Success, Failure> {
 
   @JsonKey(ignore: true)
   @override
-  _$FailureCopyWith<Success, Failure, _Failure<Success, Failure>>
-      get copyWith =>
-          __$FailureCopyWithImpl<Success, Failure, _Failure<Success, Failure>>(
-              this, _$identity);
+  _$$_FailureCopyWith<Success, Failure, _$_Failure<Success, Failure>>
+      get copyWith => __$$_FailureCopyWithImpl<Success, Failure,
+          _$_Failure<Success, Failure>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -333,8 +331,8 @@ abstract class _Failure<Success, Failure> extends Result<Success, Failure> {
   const factory _Failure(final Failure failure) = _$_Failure<Success, Failure>;
   const _Failure._() : super._();
 
-  Failure get failure => throw _privateConstructorUsedError;
+  Failure get failure;
   @JsonKey(ignore: true)
-  _$FailureCopyWith<Success, Failure, _Failure<Success, Failure>>
+  _$$_FailureCopyWith<Success, Failure, _$_Failure<Success, Failure>>
       get copyWith => throw _privateConstructorUsedError;
 }
