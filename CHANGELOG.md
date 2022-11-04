@@ -1,3 +1,5 @@
+## 1.0.7
+* updates dependencies
 ## 1.0.6
 * updates dependencies
 ## 1.0.5

@@ -24,8 +24,8 @@ mixin _$Result<Success, Failure> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Success success)? success,
-    TResult Function(Failure failure)? failure,
+    TResult? Function(Success success)? success,
+    TResult? Function(Failure failure)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,8 +43,8 @@ mixin _$Result<Success, Failure> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Success<Success, Failure> value)? success,
-    TResult Function(_Failure<Success, Failure> value)? failure,
+    TResult? Function(_Success<Success, Failure> value)? success,
+    TResult? Function(_Failure<Success, Failure> value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,17 +60,19 @@ mixin _$Result<Success, Failure> {
 abstract class $ResultCopyWith<Success, Failure, $Res> {
   factory $ResultCopyWith(Result<Success, Failure> value,
           $Res Function(Result<Success, Failure>) then) =
-      _$ResultCopyWithImpl<Success, Failure, $Res>;
+      _$ResultCopyWithImpl<Success, Failure, $Res, Result<Success, Failure>>;
 }
 
 /// @nodoc
-class _$ResultCopyWithImpl<Success, Failure, $Res>
+class _$ResultCopyWithImpl<Success, Failure, $Res,
+        $Val extends Result<Success, Failure>>
     implements $ResultCopyWith<Success, Failure, $Res> {
   _$ResultCopyWithImpl(this._value, this._then);
 
-  final Result<Success, Failure> _value;
   // ignore: unused_field
-  final $Res Function(Result<Success, Failure>) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -78,27 +80,26 @@ abstract class _$$_SuccessCopyWith<Success, Failure, $Res> {
   factory _$$_SuccessCopyWith(_$_Success<Success, Failure> value,
           $Res Function(_$_Success<Success, Failure>) then) =
       __$$_SuccessCopyWithImpl<Success, Failure, $Res>;
+  @useResult
   $Res call({Success success});
 }
 
 /// @nodoc
 class __$$_SuccessCopyWithImpl<Success, Failure, $Res>
-    extends _$ResultCopyWithImpl<Success, Failure, $Res>
+    extends _$ResultCopyWithImpl<Success, Failure, $Res,
+        _$_Success<Success, Failure>>
     implements _$$_SuccessCopyWith<Success, Failure, $Res> {
   __$$_SuccessCopyWithImpl(_$_Success<Success, Failure> _value,
       $Res Function(_$_Success<Success, Failure>) _then)
-      : super(_value, (v) => _then(v as _$_Success<Success, Failure>));
+      : super(_value, _then);
 
-  @override
-  _$_Success<Success, Failure> get _value =>
-      super._value as _$_Success<Success, Failure>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? success = freezed,
+    Object? success = null,
   }) {
     return _then(_$_Success<Success, Failure>(
-      success == freezed
+      null == success
           ? _value.success
           : success // ignore: cast_nullable_to_non_nullable
               as Success,
@@ -128,6 +129,7 @@ class _$_Success<Success, Failure> extends _Success<Success, Failure> {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SuccessCopyWith<Success, Failure, _$_Success<Success, Failure>>
       get copyWith => __$$_SuccessCopyWithImpl<Success, Failure,
           _$_Success<Success, Failure>>(this, _$identity);
@@ -144,8 +146,8 @@ class _$_Success<Success, Failure> extends _Success<Success, Failure> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Success success)? success,
-    TResult Function(Failure failure)? failure,
+    TResult? Function(Success success)? success,
+    TResult? Function(Failure failure)? failure,
   }) {
     return success?.call(this.success);
   }
@@ -175,8 +177,8 @@ class _$_Success<Success, Failure> extends _Success<Success, Failure> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Success<Success, Failure> value)? success,
-    TResult Function(_Failure<Success, Failure> value)? failure,
+    TResult? Function(_Success<Success, Failure> value)? success,
+    TResult? Function(_Failure<Success, Failure> value)? failure,
   }) {
     return success?.call(this);
   }
@@ -210,27 +212,26 @@ abstract class _$$_FailureCopyWith<Success, Failure, $Res> {
   factory _$$_FailureCopyWith(_$_Failure<Success, Failure> value,
           $Res Function(_$_Failure<Success, Failure>) then) =
       __$$_FailureCopyWithImpl<Success, Failure, $Res>;
+  @useResult
   $Res call({Failure failure});
 }
 
 /// @nodoc
 class __$$_FailureCopyWithImpl<Success, Failure, $Res>
-    extends _$ResultCopyWithImpl<Success, Failure, $Res>
+    extends _$ResultCopyWithImpl<Success, Failure, $Res,
+        _$_Failure<Success, Failure>>
     implements _$$_FailureCopyWith<Success, Failure, $Res> {
   __$$_FailureCopyWithImpl(_$_Failure<Success, Failure> _value,
       $Res Function(_$_Failure<Success, Failure>) _then)
-      : super(_value, (v) => _then(v as _$_Failure<Success, Failure>));
+      : super(_value, _then);
 
-  @override
-  _$_Failure<Success, Failure> get _value =>
-      super._value as _$_Failure<Success, Failure>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? failure = freezed,
+    Object? failure = null,
   }) {
     return _then(_$_Failure<Success, Failure>(
-      failure == freezed
+      null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as Failure,
@@ -260,6 +261,7 @@ class _$_Failure<Success, Failure> extends _Failure<Success, Failure> {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FailureCopyWith<Success, Failure, _$_Failure<Success, Failure>>
       get copyWith => __$$_FailureCopyWithImpl<Success, Failure,
           _$_Failure<Success, Failure>>(this, _$identity);
@@ -276,8 +278,8 @@ class _$_Failure<Success, Failure> extends _Failure<Success, Failure> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Success success)? success,
-    TResult Function(Failure failure)? failure,
+    TResult? Function(Success success)? success,
+    TResult? Function(Failure failure)? failure,
   }) {
     return failure?.call(this.failure);
   }
@@ -307,8 +309,8 @@ class _$_Failure<Success, Failure> extends _Failure<Success, Failure> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Success<Success, Failure> value)? success,
-    TResult Function(_Failure<Success, Failure> value)? failure,
+    TResult? Function(_Success<Success, Failure> value)? success,
+    TResult? Function(_Failure<Success, Failure> value)? failure,
   }) {
     return failure?.call(this);
   }
