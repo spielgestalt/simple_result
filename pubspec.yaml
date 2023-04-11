@@ -1,9 +1,9 @@
 name: simple_result
-version: 1.0.9
+version: 1.0.10
 homepage: https://github.com/spielgestalt/simple_result.git
 description: A simple posibility to return a Result with eiter success or failure.
-environment:
-  sdk: '>=2.18.6 <3.0.0'
+environment:  
+  sdk: ">=2.17.0 <3.0.0"
 dependencies:
   freezed_annotation: ^2.2.0
   
