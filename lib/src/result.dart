@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'result.freezed.dart';
 
 @freezed
-class Result<Success, Failure> with _$Result<Success, Failure> {
+sealed class Result<Success, Failure> with _$Result<Success, Failure> {
   const Result._();
   const factory Result.success(Success success) = _Success;
   const factory Result.failure(Failure failure) = _Failure;
